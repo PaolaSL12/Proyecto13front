@@ -1,0 +1,77 @@
+.tusCitas {
+    width: 100%;
+    min-height: 85svh;
+    background-color: var(--mbp-color-2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: var(--mbp-padding-l);
+    gap: var(--mbp-gap-m);
+}
+
+.appointment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    height: 180px;
+    padding: var(--mbp-padding-xs);
+    border: solid 3px var(--mbp-color-5);
+    border-radius: var(--mbp-br);
+}
+
+.appointment h2 {
+   color: var(--mbp-color-5);
+}
+
+.appointment button {
+    font-size: 1.1em;
+    width: 150px;
+    border-radius: var(--mbp-br);
+    background-color: var(--mbp-color-4);
+    color: var(--mbp-color-2);
+    border: none;
+    height: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.notDates {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+    .tusCitas {
+        padding: var(--mbp-padding-s);
+        padding-top: var(--mbp-padding-l);
+    }
+
+    .appointment {
+        width: 280px;
+        height: 190px;
+        padding: var(--mbp-padding-xs);
+        border: solid 3px var(--mbp-color-5);
+        border-radius: var(--mbp-br);
+    }
+    
+    .appointment h2 {
+       font-size: 1.2em;
+    }
+    
+    .appointment button {
+        font-size: 1em;
+        width: 150px;
+        border-radius: var(--mbp-br);
+        background-color: var(--mbp-color-4);
+        color: var(--mbp-color-2);
+        border: none;
+        height: 25px;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+}
