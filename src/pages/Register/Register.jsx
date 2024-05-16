@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import FormName from "../../components/FormName/FormName";
 import FormPassword from "../../components/FormPassword/FormPassword";
 import FormEmail from "../../components/FormEmail/FormEmail";
-import submitRegister from "../../components/Fetch/submitRegister";
+import submitRegister from "../../utils/Fetch/submitRegister";
+
 
 const Register = ({ isLogged, setIsLogged }) => {
   const {

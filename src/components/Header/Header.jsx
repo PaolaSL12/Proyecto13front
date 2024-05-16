@@ -1,21 +1,35 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import ImgWrapper from "../ImgWrapper/ImgWrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Header = ({ isLogged, setIsLogged }) => {
+const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    setIsLogged(!isLogged)
+
+    setIsLogged(false);
+    setIsAdmin(false);
   };
 
-  const user = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
+  const [user, setUser] = useState();
+  const [token, setToken] = useState();
+
   const isLoggedIn = user && token;
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setUser(storedUser);
+    setToken(localStorage.getItem("token"));
 
+    if (storedUser && storedUser.rol === "admin") {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [isLogged]);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,13 +41,13 @@ const Header = ({ isLogged, setIsLogged }) => {
 
   return (
     <nav>
-        <ImgWrapper
-          c={"logo"}
-          url={
-            "https://res.cloudinary.com/daowiromv/image/upload/v1715366883/LaMussa/LaMussa_web-29_xlhdkg.png"
-          }
-          alt={"logo"}
-        />
+      <ImgWrapper
+        c={"logo"}
+        url={
+          "https://res.cloudinary.com/daowiromv/image/upload/v1715366883/LaMussa/LaMussa_web-29_xlhdkg.png"
+        }
+        alt={"logo"}
+      />
       <div className="toggle" onClick={toggleMenu}>
         <ImgWrapper
           c={"toggleImg"}
@@ -51,22 +65,30 @@ const Header = ({ isLogged, setIsLogged }) => {
         </li>
         {isLoggedIn ? (
           <>
+            {!isAdmin && (
+              <li>
+                <NavLink to="/citas">TUS CITAS</NavLink>
+              </li>
+            )}
+            {isAdmin && (
+              <li>
+                <NavLink to="/calendario">CALENDARIO</NavLink>
+              </li>
+            )}
             <li>
-              <NavLink to="/citas">TU CITAS</NavLink>
-            </li>
-            <li>
-              <a  onClick={handleLogout} style={{cursor: "pointer"}}>
+              <a href="/" onClick={handleLogout} style={{ cursor: "pointer" }}>
                 CERRAR SESION
               </a>
             </li>
           </>
         ) : (
-          <><li>
-          <NavLink to="/register">REGISTRATE</NavLink>
-        </li>
-          <li>
-            <NavLink to="/login">INICIA SESION</NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to="/register">REGISTRATE</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">INICIA SESION</NavLink>
+            </li>
           </>
         )}
       </ul>

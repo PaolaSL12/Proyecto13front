@@ -6,8 +6,9 @@ import FormDate from "../../components/FormDate/FormDate";
 import FormTime from "../../components/FormTime/FormTime";
 import FormService from "../../components/FormService/FormService";
 import FormStylists from "../../components/FormStylists/FormStylists";
-import fetchStylist from "../../components/Fetch/fetchStylist";
-import submitAppointment from "../../components/Fetch/submitAppointment";
+import fetchStylist from "../../utils/Fetch/fetchStylist";
+import submitAppointment from "../../utils/Fetch/submitAppointment";
+
 
 const Appointment = ({ services }) => {
   const {
@@ -30,6 +31,7 @@ const Appointment = ({ services }) => {
   const submit = (formData) => {
     submitAppointment(formData, user, navigate, reset); 
   };
+
 
   return (
     <div className="appointmentForm">

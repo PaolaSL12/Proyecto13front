@@ -3,7 +3,8 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import FormName from "../../components/FormName/FormName";
 import FormPassword from "../../components/FormPassword/FormPassword";
-import submitLogin from "../../components/Fetch/submitLogin";
+import submitLogin from "../../utils/Fetch/submitLogin";
+
 
 const Login = ({ isLogged, setIsLogged }) => {
   const {

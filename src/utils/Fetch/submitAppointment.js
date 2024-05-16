@@ -17,8 +17,10 @@ const submitAppointment = async (formData, user, navigate, reset) => {
     });
     const response = await res.json();
 
+    console.log(res.status);
+
     if (res.status === 420) {
-      alert("Nombre de usuario o contraseña incorrecto❌");
+      alert("el intervalo no esta disponible");
       reset();
       return;
     }

@@ -1,0 +1,88 @@
+.calendario {
+    width: 100%;
+    min-height: 85svh;
+    background-color: var(--mbp-color-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--mbp-gap-m);
+    padding: var(--mbp-padding-m);
+}
+
+.calendario > h2 {
+    font-size: 1.6em;
+    color: var(--mbp-color-4);
+}
+
+.selected {
+    font-size: 1.6em;
+}
+.calendar {
+    width: 600px;
+    height: auto;
+}
+.calendar button {
+    border: none;
+    height: 40px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.calendar abbr {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+.react-calendar__month-view__weekdays {
+    background-color: var(--mbp-color-6);
+    color: var(--mbp-color-2);
+}
+
+.react-calendar__navigation {
+    display: flex;
+    align-items: center;
+}
+
+.appointment-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: var(--mbp-gap-m);
+}
+@media screen and (max-width: 700px) {
+    .calendar {
+        width: auto;
+        height: auto;
+    }
+
+    .selected {
+        font-size: 1.2em;
+    }
+   
+}
+
+@media screen and (max-width: 450px) {
+    .calendario {
+        padding: var(--mbp-padding-s);
+    }
+    .calendar {
+        width: auto;
+        height: auto;
+    }
+    .calendar button {
+        font-size: 1em;
+    }
+    
+    .calendar abbr {
+        font-size: 1em;
+        text-align: center;
+    }
+    .selected {
+        text-align: center;
+        font-size: 1em;
+    }
+
+}

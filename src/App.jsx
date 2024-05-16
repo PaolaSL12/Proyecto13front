@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import TusCitas from "./pages/TusCitas/TusCitas";
 import Appointment from "./pages/Appointment/Appointment";
 import { API } from "./utils/Services/API";
+import Calendario from "./pages/Calendario/Calendario";
 
 const App = () => {
   const [isLogged, setIsLogged] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [services, setServices] = useState([]);
   useEffect(() => {
     const fetchServices = async () => {
@@ -28,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
+      <Header isLogged={isLogged} setIsLogged={setIsLogged} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -45,6 +47,7 @@ const App = () => {
           element={<Appointment services={services} />}
         />
         <Route path="/citas" element={<TusCitas />} />
+        <Route path="/calendario" element={<Calendario/>} />
       </Routes>
     </>
   );
