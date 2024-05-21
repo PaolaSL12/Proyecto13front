@@ -1,5 +1,5 @@
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ImgWrapper from "../ImgWrapper/ImgWrapper";
 import { useEffect, useState } from "react";
 
@@ -44,7 +44,7 @@ const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
       <ImgWrapper
         c={"logo"}
         url={
-          "https://res.cloudinary.com/daowiromv/image/upload/v1715366883/LaMussa/LaMussa_web-29_xlhdkg.png"
+          "/assets/logo.png"
         }
         alt={"logo"}
       />
@@ -76,9 +76,11 @@ const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
               </li>
             )}
             <li>
-              <a href="/" onClick={handleLogout} style={{ cursor: "pointer" }}>
+            <Link to="/">
+              <a onClick={handleLogout} style={{ cursor: "pointer" }}>
                 CERRAR SESION
               </a>
+              </Link>
             </li>
           </>
         ) : (
