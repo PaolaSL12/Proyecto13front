@@ -35,4 +35,5 @@
   list-style: none;
   color: black;
   font-family: "Josefin Sans", sans-serif;
+  user-select: none;
 }

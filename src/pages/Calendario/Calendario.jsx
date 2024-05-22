@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import "./Calendario.css"
 import { format } from 'date-fns';
 import AppointmentCard from '../../components/AppointmentCard/AppointmentCard';
 import { getAppointments } from '../../utils/Fetch/getAppointments';
 
-
-
 const Calendario = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [appointments, setAppointments ] = useState([])
+  const [appointments, setAppointments ] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleDateChange = date => {
     setSelectedDate(date);
-    setAppointments([])
   };
 
   const formatDate = (date) => {
     return format(date, 'dd/MM/yyyy');
   };
 
-
   useEffect(()=> {
-    getAppointments(formatDate, selectedDate, setErrorMessage, setAppointments)
-  },[selectedDate])  
+    setLoading(true); 
+    getAppointments(formatDate, selectedDate, setErrorMessage, (data) => {
+      setAppointments(data);
+      setLoading(false); 
+    });
+  },[selectedDate]);
 
   return (
     <div className='calendario'>
@@ -34,12 +35,17 @@ const Calendario = () => {
         onChange={handleDateChange}
       />
       <p className='selected'>Fecha seleccionada: {formatDate(selectedDate)}</p>
-      <div className='appointment-container'>
-      <AppointmentCard appointments={appointments} setAppointments={setAppointments}/>
-      </div>
+      {loading ? (
+        <p className="notDates">Cargando...</p>
+      ) : (
+        <>
+            <div className='appointment-container'>
+                <AppointmentCard appointments={appointments} setAppointments={setAppointments}/> 
+            </div>
+        </>
+      )}
     </div>
   );
 };
-
 
 export default Calendario;

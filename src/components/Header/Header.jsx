@@ -41,6 +41,7 @@ const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
 
   return (
     <nav>
+    <Link to="/">
       <ImgWrapper
         c={"logo"}
         url={
@@ -48,6 +49,7 @@ const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
         }
         alt={"logo"}
       />
+      </Link>
       <div className="toggle" onClick={toggleMenu}>
         <ImgWrapper
           c={"toggleImg"}
@@ -76,10 +78,8 @@ const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
               </li>
             )}
             <li>
-            <Link to="/">
-              <a onClick={handleLogout} style={{ cursor: "pointer" }}>
+            <Link to="/" onClick={handleLogout} style={{ cursor: "pointer" }}>
                 CERRAR SESION
-              </a>
               </Link>
             </li>
           </>

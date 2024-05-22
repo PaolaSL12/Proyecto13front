@@ -10,8 +10,8 @@ const FormPassword = ({ errors, register, isPatternRequired }) => {
             required: true,
             ...(isPatternRequired && {
               pattern: {
-                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                message: "La contraseña debe incluir números, letras Mayúsculas y minúsculas y tener al menos 8 caracteres",
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                message: "La contraseña debe incluir números, letras Mayúsculas y minúsculas y tener al menos 6 caracteres",
               },
             })
           })}

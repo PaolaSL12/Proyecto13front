@@ -14,14 +14,19 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchServices = async () => {
+      setLoading(true)
       try {
         const res = await API({ endpoint: "service" });
         const response = await res.json();
         setServices(response);
       } catch (error) {
         console.error("Error fetching services:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -41,7 +46,7 @@ const App = () => {
           path="/register"
           element={<Register isLogged={isLogged} setIsLogged={setIsLogged} />}
         />
-        <Route path="/services" element={<Servicios services={services} />} />
+        <Route path="/services" element={<Servicios services={services}  loading={loading}/>} />
         <Route
           path="/appointment/:id"
           element={<Appointment services={services} />}

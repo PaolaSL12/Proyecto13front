@@ -26,7 +26,7 @@ const submitAppointment = async (formData, user, navigate, reset) => {
     }
 
     alert(
-      `Cita creada con exito 💁‍♀️💅 puedes ver tus citas agendadas apartado de TUS CITAS`
+      `Cita creada con éxito 💁‍♀️💅 Puedes ver tus citas agendadas en el apartado de TUS CITAS.`
     );
     navigate("/");
   } catch (error) {
