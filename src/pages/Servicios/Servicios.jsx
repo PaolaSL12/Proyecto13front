@@ -1,15 +1,16 @@
 
 import "./Servicios.css"
 import ImgWrapper from "../../components/ImgWrapper/ImgWrapper"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Servicios = ({services, loading}) => {
+  const navigate = useNavigate();
 
   const handleAppointmentClick = (e) => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       e.preventDefault(); 
-      alert("Por favor, inicia sesión o regístrate para poder agendar una cita.");
+      navigate("/login");
      ;
     }
   };

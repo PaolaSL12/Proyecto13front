@@ -9,6 +9,7 @@ import TusCitas from "./pages/TusCitas/TusCitas";
 import Appointment from "./pages/Appointment/Appointment";
 import { API } from "./utils/Services/API";
 import Calendario from "./pages/Calendario/Calendario";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -35,6 +36,7 @@ const App = () => {
 
   return (
     <>
+     <ToastContainer />
       <Header isLogged={isLogged} setIsLogged={setIsLogged} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
       <Routes>
         <Route path="/" element={<Home />} />

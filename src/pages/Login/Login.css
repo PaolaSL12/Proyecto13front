@@ -55,6 +55,15 @@ form button {
     font-size: 0.8em;
 }
 
+.loginMessage {
+    padding-top: var(--mbp-padding-m);
+}
+
+.registerMessage {
+    color: var(--mbp-color-4);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 420px) {
     form {
         width: 90%;
