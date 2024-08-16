@@ -1,6 +1,13 @@
 import { API } from "../../utils/Services/API";
 
-const submitRegister = async (formData, setIsLogged, reset, navigate) => {
+const submitRegister = async (
+  formData,
+  setIsLogged,
+  reset,
+  navigate,
+  setMessage,
+  setMessageType
+) => {
   try {
     const res = await API({
       method: "POST",
@@ -14,17 +21,22 @@ const submitRegister = async (formData, setIsLogged, reset, navigate) => {
     const response = await res.json();
 
     if (res.status === 420) {
-      alert("Nombre de usuario ya existente ❌");
-      reset();
+      setMessage("Nombre de usuario ya existente ❌");
+      setMessageType("error");
       return;
     }
 
     localStorage.setItem("token", response.token);
     localStorage.setItem("user", JSON.stringify(response.user));
     setIsLogged(true);
-    alert("Se ha registrado correctamente 💅💁‍♀️");
 
-    navigate("/");
+    setMessage("Se ha registrado correctamente 💅💁‍♀️");
+    setMessageType("success");
+    
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+
   } catch (error) {
     console.error("Error fetching:", error);
   }

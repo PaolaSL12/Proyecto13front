@@ -8,6 +8,7 @@ import FormService from "../../components/FormService/FormService";
 import FormStylists from "../../components/FormStylists/FormStylists";
 import fetchStylist from "../../utils/Fetch/fetchStylist";
 import submitAppointment from "../../utils/Fetch/submitAppointment";
+import Message from "../../components/Message/Message";
 
 
 const Appointment = ({ services }) => {
@@ -19,6 +20,8 @@ const Appointment = ({ services }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const { id } = useParams();
   const [stylists, setStylists] = useState([]);
@@ -29,12 +32,23 @@ const Appointment = ({ services }) => {
   }, []);
 
   const submit = (formData) => {
-    submitAppointment(formData, user, navigate, reset); 
+    submitAppointment(formData, user, navigate, reset, setMessage,
+      setMessageType); 
+  };
+
+  const clearMessage = () => {
+    setMessage("");
+    setMessageType("");
   };
 
 
   return (
     <div className="appointmentForm">
+       <Message
+        message={message}
+        type={messageType}
+        clearMessage={clearMessage}
+      />
       <h2>Agenda tu cita</h2>
       <form onSubmit={handleSubmit(submit)}>
         <FormDate register={register} errors={errors} />

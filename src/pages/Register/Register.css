@@ -3,7 +3,7 @@
     height: 85svh;
     background-color: var(--mbp-color-2);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;

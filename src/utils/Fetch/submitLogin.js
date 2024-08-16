@@ -1,7 +1,6 @@
-
 import { API } from "../../utils/Services/API";
 
-const submitLogin = async (formData, setIsLogged, reset, navigate) => {
+const submitLogin = async (formData, setIsLogged, reset, navigate, setMessage, setMessageType) => {
   try {
     const res = await API({
       method: "POST",
@@ -14,7 +13,8 @@ const submitLogin = async (formData, setIsLogged, reset, navigate) => {
     const response = await res.json();
 
     if (res.status === 420) {
-      alert("Nombre de usuario o contraseña incorrecto❌");
+      setMessage("Nombre de usuario o contraseña incorrecto❌");
+      setMessageType("error");
       reset();
       return;
     }
@@ -23,9 +23,17 @@ const submitLogin = async (formData, setIsLogged, reset, navigate) => {
     localStorage.setItem("user", JSON.stringify(response.user));
     setIsLogged(true);
 
-    navigate("/");
+    setMessage("¡Inicio de sesión exitoso!✅");
+    setMessageType("success");
+    
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  
   } catch (error) {
     console.error("Error fetching:", error);
+    setMessage("Error de red. Por favor, intenta nuevamente.");
+    setMessageType("error");
   }
 };
 

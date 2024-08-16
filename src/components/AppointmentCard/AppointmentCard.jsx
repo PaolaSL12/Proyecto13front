@@ -2,7 +2,7 @@ import { deleteAppointment } from "../../utils/Fetch/deleteAppointment";
 import "./AppointmentCard.css"
 
 
-const AppointmentCard = ({appointments, setAppointments}) => {
+const AppointmentCard = ({appointments, setAppointments, setMessage, setMessageType}) => {
   return (
     <>
     {appointments.length === 0 ? (
@@ -25,7 +25,7 @@ const AppointmentCard = ({appointments, setAppointments}) => {
               <p>
                 Hora: {appointment.startTime} / {appointment.endTime}
               </p>
-              <button onClick={() => deleteAppointment(appointment._id, setAppointments)}>
+              <button onClick={() => deleteAppointment(appointment._id, setAppointments, setMessage, setMessageType)}>
                 Eliminar Cita
               </button>
             </div>

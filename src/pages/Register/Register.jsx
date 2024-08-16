@@ -5,6 +5,8 @@ import FormName from "../../components/FormName/FormName";
 import FormPassword from "../../components/FormPassword/FormPassword";
 import FormEmail from "../../components/FormEmail/FormEmail";
 import submitRegister from "../../utils/Fetch/submitRegister";
+import Message from "../../components/Message/Message";
+import { useState } from "react";
 
 
 const Register = ({ isLogged, setIsLogged }) => {
@@ -16,13 +18,28 @@ const Register = ({ isLogged, setIsLogged }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const submit = (formData) => {
-    submitRegister(formData, setIsLogged, reset, navigate); 
+    submitRegister(formData, setIsLogged, reset, navigate,
+      setMessage,
+      setMessageType); 
+  };
+
+  
+  const clearMessage = () => {
+    setMessage("");
+    setMessageType("");
   };
 
   return (
     <div className="register">
+       <Message
+        message={message}
+        type={messageType}
+        clearMessage={clearMessage}
+      />
       <form onSubmit={handleSubmit(submit)}>
         <FormName register={register} errors={errors} />
         <FormEmail register={register} errors={errors}/>
