@@ -23,6 +23,10 @@ const submitRegister = async (
     if (res.status === 420) {
       setMessage("Nombre de usuario ya existente ❌");
       setMessageType("error");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
       return;
     }
 

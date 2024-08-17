@@ -19,7 +19,7 @@ const submitAppointment = async (formData, user, navigate, reset, setMessage, se
 
 
     if (res.status === 420) {
-      setMessage("El intervalo no esta disponible");
+      setMessage("El intervalo no esta disponible, intente de nuevo en otro horario, Gracias!");
       setMessageType("error");
       reset();
       return;

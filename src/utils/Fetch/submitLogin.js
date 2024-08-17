@@ -15,6 +15,10 @@ const submitLogin = async (formData, setIsLogged, reset, navigate, setMessage, s
     if (res.status === 420) {
       setMessage("Nombre de usuario o contraseña incorrecto❌");
       setMessageType("error");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
       reset();
       return;
     }
