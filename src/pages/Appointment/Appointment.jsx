@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import "./Appointment.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FormDate from "../../components/FormDate/FormDate";
 import FormTime from "../../components/FormTime/FormTime";
 import FormService from "../../components/FormService/FormService";
@@ -9,9 +9,10 @@ import FormStylists from "../../components/FormStylists/FormStylists";
 import fetchStylist from "../../utils/Fetch/fetchStylist";
 import submitAppointment from "../../utils/Fetch/submitAppointment";
 import Message from "../../components/Message/Message";
+import { AppContext } from "../../utils/Context/Context";
 
 
-const Appointment = ({ services }) => {
+const Appointment = () => {
   const {
     register,
     handleSubmit,
@@ -26,6 +27,8 @@ const Appointment = ({ services }) => {
   const { id } = useParams();
   const [stylists, setStylists] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+
+  const { services } = useContext(AppContext);
 
   useEffect(() => {
     fetchStylist(setStylists); 

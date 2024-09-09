@@ -2,9 +2,13 @@
 import "./Servicios.css"
 import ImgWrapper from "../../components/ImgWrapper/ImgWrapper"
 import { Link, useNavigate } from "react-router-dom"
+import { useContext } from "react";
+import { AppContext } from "../../utils/Context/Context";
 
-const Servicios = ({services, loading}) => {
+const Servicios = () => {
   const navigate = useNavigate();
+
+  const { services, loading } = useContext(AppContext);
 
   const handleAppointmentClick = (e) => {
     const user = JSON.parse(localStorage.getItem("user"));

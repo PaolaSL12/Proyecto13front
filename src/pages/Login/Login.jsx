@@ -4,10 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import FormName from "../../components/FormName/FormName";
 import FormPassword from "../../components/FormPassword/FormPassword";
 import submitLogin from "../../utils/Fetch/submitLogin";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Message from "../../components/Message/Message";
+import { AppContext } from "../../utils/Context/Context";
 
-const Login = ({ isLogged, setIsLogged }) => {
+const Login = () => {
+
+  const { setIsLogged } = useContext(AppContext);
+
   const {
     register,
     handleSubmit,

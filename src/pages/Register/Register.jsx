@@ -6,10 +6,10 @@ import FormPassword from "../../components/FormPassword/FormPassword";
 import FormEmail from "../../components/FormEmail/FormEmail";
 import submitRegister from "../../utils/Fetch/submitRegister";
 import Message from "../../components/Message/Message";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 
-const Register = ({ isLogged, setIsLogged }) => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -20,6 +20,8 @@ const Register = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
+
+  const { setIsLogged } = useContext(AppContext);
 
   const submit = (formData) => {
     submitRegister(formData, setIsLogged, reset, navigate,

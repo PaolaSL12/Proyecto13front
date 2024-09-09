@@ -1,9 +1,13 @@
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
 import ImgWrapper from "../ImgWrapper/ImgWrapper";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../utils/Context/Context";
 
-const Header = ({ isLogged, setIsLogged, isAdmin, setIsAdmin }) => {
+const Header = () => {
+
+  const { isLogged, setIsLogged, isAdmin, setIsAdmin } = useContext(AppContext);
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
