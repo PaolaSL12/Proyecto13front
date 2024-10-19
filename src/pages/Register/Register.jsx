@@ -7,6 +7,7 @@ import FormEmail from "../../components/FormEmail/FormEmail";
 import submitRegister from "../../utils/Fetch/submitRegister";
 import Message from "../../components/Message/Message";
 import { useContext, useState } from "react";
+import { AppContext } from "../../utils/Context/Context";
 
 
 const Register = () => {

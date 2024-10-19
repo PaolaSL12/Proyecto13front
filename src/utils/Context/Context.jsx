@@ -11,7 +11,6 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchServices = async () => {
-      setLoading(true);
       try {
         const res = await API({ endpoint: "service" });
         const response = await res.json();
